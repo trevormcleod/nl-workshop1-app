@@ -7,3 +7,5 @@ exports.popular = function (req, res) {
 	console.log(Instagram.media.popular());
 	res.send('hello');
 }
+
+Instagram.media.popular();

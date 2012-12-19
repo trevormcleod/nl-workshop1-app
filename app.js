@@ -35,6 +35,7 @@ app.get('/popular', instagram.popular);
 
 
 
+
 app.get('/', routes.index);
 app.get('/users', user.list);
 
