@@ -8,9 +8,11 @@ var express = require('express')
   , instagram = require('./routes/instagram')
   , user = require('./routes/user')
   , http = require('http')
+  , io = require('socket.io')
   , path = require('path');
 
-var app = express();
+var app = express()
+  , server = http.createServer(app)
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -38,7 +40,9 @@ app.get('/popular', instagram.popular);
 app.get('/', routes.index);
 app.get('/users', user.list);
 
-http.createServer(app).listen(app.get('port'), function(){
+io.listen(server)
+
+server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
 });
 
