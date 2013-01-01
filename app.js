@@ -5,14 +5,16 @@
 
 var express = require('express')
   , routes = require('./routes')
-  , instagram = require('./routes/instagram')
   , user = require('./routes/user')
   , http = require('http')
-  , io = require('socket.io')
+  , socketio = require('socket.io')
   , path = require('path');
 
 var app = express()
   , server = http.createServer(app)
+  , io = socketio.listen(server)
+
+var instagram = require('./routes/instagram')(app, io)
 
 app.configure(function(){
   app.set('port', process.env.PORT || 3000);
@@ -40,8 +42,6 @@ app.get('/popular', instagram.popular);
 
 app.get('/', routes.index);
 app.get('/users', user.list);
-
-io.listen(server)
 
 server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
