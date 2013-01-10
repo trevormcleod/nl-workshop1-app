@@ -1,2 +1,4 @@
 h1 Explore!
-div #{JSON.stringify(medias)}
+#media
+  each media in medias
+    img(src='#{media.images.standard_resolution.url}')
