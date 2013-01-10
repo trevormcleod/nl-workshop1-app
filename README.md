@@ -24,6 +24,9 @@ Express Installed, App Initialized (Essentially where it is now: 12/26/2012)
 
 __Student Steps__
 
+1. npm install express -g
+2. express [APP_NAME]
+
 Express Configured, Routes Set Up, Lots of Dummy Code for DB/Instagram API
 
 ##### Step 3 - Jade
