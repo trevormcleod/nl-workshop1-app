@@ -22,6 +22,8 @@ Express Installed, App Initialized (Essentially where it is now: 12/26/2012)
 
 ##### Step 2 - Express
 
+__Student Steps__
+
 Express Configured, Routes Set Up, Lots of Dummy Code for DB/Instagram API
 
 ##### Step 3 - Jade
