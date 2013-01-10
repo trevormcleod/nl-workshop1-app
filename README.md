@@ -20,14 +20,23 @@ These branches should contain the steps along the way to build the final app, th
 
 Express Installed, App Initialized (Essentially where it is now: 12/26/2012)
 
-##### Step 2 - Express
+Express Configured, Routes Set Up, Lots of Dummy Code for DB/Instagram API.
 
 __Student Steps__
 
 1. npm install express -g
 2. express [APP_NAME]
+3. Create an Instagram App account
 
-Express Configured, Routes Set Up, Lots of Dummy Code for DB/Instagram API
+##### Step 2 - Express
+
+Express Configured, Routes Set Up, Lots of Dummy Code for DB/Instagram API.
+
+__Student Steps__
+
+1. Re-work the routes
+2. Add Instagram library
+
 
 ##### Step 3 - Jade
 
