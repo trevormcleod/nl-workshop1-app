@@ -35,4 +35,38 @@ module.exports.create = function (app) {
       });
     });
   });
+
+  // Illustrate route parameters
+  app.get('/location/:latitude/:longitude', function (req, res, next) {
+    var lat = Number(req.param('latitude'))
+    var lng = Number(req.param('longitude'))
+
+    ig.location_search({ lat: lat, lng: lng }, function(err, result, limit) {
+      if (err) {
+        console.log(err);
+        return next(err);
+      }
+
+      if (result.length == 0) {
+        return res.send('empty');
+      }
+
+      var location = result[0]
+ 
+      ig.location_media_recent(location.id, function(err, result, pagination, limit) {
+	if (err) {
+	  console.log(err);
+	  return next(err);
+	}
+
+        console.log(require('util').inspect(result));
+        console.log(require('util').inspect(limit));
+
+        res.render('location', {
+          medias: result,
+          location: location
+        });
+      });
+    });
+  });
 }

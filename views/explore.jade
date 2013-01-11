@@ -1,4 +1,7 @@
 h1 Explore!
 #media
   each media in medias
-    img(src='#{media.images.standard_resolution.url}')
+    - if (media.location)
+      span #{JSON.stringify(media.location)}
+      a(href='/location/#{media.location.latitude}/#{media.location.longitude}')
+        img(src='#{media.images.low_resolution.url}')
