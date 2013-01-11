@@ -34,6 +34,16 @@ __Student Steps__
 
 1. Re-work the routes
 2. Add Instagram library
+3. Added a call to the explore route to get the popular images.
+4. Showing how JSON stringify works.
+5. Sorting locations by longitude/latitude. 
+6. Add links to a location view on click of an image.
+7. Setting up route parameters within our location route links.
+8. Did a search to find most recent location details based on a users' click on an image.
+9. Location Media Recent call to Instagram using location id of first picture.
+10. Adding a new view called "Location"	 
+11. Students can check out Leaflet, Google Maps, others to try to hack around with their Jade files to make things sexy.
+
 
 
 ### Step 3 - Jade
