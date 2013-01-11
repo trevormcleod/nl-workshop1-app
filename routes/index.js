@@ -1,4 +1,5 @@
-var ig = require('instagram-node').instagram();
+var ig = require('instagram-node').instagram(),
+    db = require('../models');
 
 /*
  * GET home page.
