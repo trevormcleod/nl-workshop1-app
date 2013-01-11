@@ -31,6 +31,7 @@ module.exports.create = function (app) {
       console.log(require('util').inspect(medias));
 
       res.render('explore', {
+        title: 'explore',
         medias: medias
       });
     });
@@ -63,6 +64,7 @@ module.exports.create = function (app) {
         console.log(require('util').inspect(limit));
 
         res.render('location', {
+          title: 'location',
           medias: result,
           location: location
         });
