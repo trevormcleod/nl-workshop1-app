@@ -42,13 +42,19 @@ __Student Steps__
 8. Did a search to find most recent location details based on a users' click on an image.
 9. Location Media Recent call to Instagram using location id of first picture.
 10. Adding a new view called "Location"	 
-11. Students can check out Leaflet, Google Maps, others to try to hack around with their Jade files to make things sexy.
+
 
 
 
 ### Step 3 - Jade
 
 Sexier Views, Using JQuery on the Front End
+
+__Student Steps__
+
+1. Adding jQuery.
+2. Adding a script tag.
+3. Students can check out Leaflet, Google Maps, others to try to hack around with their Jade files to make things sexy.
 
 ### Step 4 - Mongo
 
