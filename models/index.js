@@ -1,7 +1,6 @@
 var mongoose = require('mongoose'),
     UserSchema = require('./User');
 
-
 // connect
 
 var uri = 'localhost';
