@@ -75,7 +75,7 @@ module.exports.create = function (app) {
     res.redirect(ig.get_authorization_url('http://localhost:3000/handleAuth', { scope: ['basic'], state: 'a state' }));
   });
 
-  app.get('/handleAuth', function(req, res) {
+  app.get('/handleAuth', function(req, res, next) {
     /*
      * { username: '', bio: '', website: '', profile_picture: '', full_name: '', id: '' }
      */
