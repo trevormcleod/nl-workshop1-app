@@ -58,7 +58,7 @@ __Student Steps__
 
 ### Step 4 - Mongo
 
-Storing Users in DB, Shows List of Followers/Following with Locations on Front End
+Instagram login button set up. Storing Users in DB, Shows List of Followers/Following with Locations on Front End.
 
 ### Step 5 - Streams
 
