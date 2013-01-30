@@ -76,13 +76,47 @@ module.exports.create = function (app) {
   });
 
   app.get('/handleAuth', function(req, res) {
+    /*
+     * { username: '', bio: '', website: '', profile_picture: '', full_name: '', id: '' }
+     */
     ig.authorize_user(req.query.code, 'http://localhost:3000/handleAuth', function(err, result) {
       if (err) {
         console.log(err);
         res.send("Didn't work");
       } else {
         console.log('Yay! Access token is ' + require('util').inspect(result));
-        res.send('You made it!!');
+        var username = result.user.username;
+        var name = result.user.full_name;
+        var access_token = result.access_token;
+        var bio = result.user.bio;
+        var profile_picture = result.user.profile_picture;
+   
+
+        db.User.findOne({username: username}, function(err, user) {
+          if (err) {
+            console.log(err);
+            return next(err);
+          }
+
+          if (!user) {
+            user = new db.User();
+            user.username = username;
+          }
+
+          user.bio = bio;
+          user.accessToken = access_token;
+          user.profileImage = profile_picture;
+          user.name = name;
+
+          user.save(function(err) {
+            if (err) {
+              console.log(err);
+              return next(err);
+            }
+
+            res.redirect('/explore');
+          });
+        });
       }
     });
   });
