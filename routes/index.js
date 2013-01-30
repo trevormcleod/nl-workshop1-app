@@ -116,6 +116,8 @@ module.exports.create = function (app) {
               return next(err);
             }
 
+            req.session.user = user;
+
             res.redirect('/explore');
           });
         });
