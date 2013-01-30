@@ -37,6 +37,24 @@ module.exports.create = function (app) {
     });
   });
 
+  app.get('/followers', function (req, res, next) {
+    var user = req.session.user;
+    console.log(user);
+
+    ig.user_followers(user.id, function(err, followers, pagination, limit) {
+      if (err) {
+        console.log(err);
+        return next(err);
+      }
+
+      console.log(require('util').inspect(followers));
+
+      res.render('followers', {
+        followers: followers
+      });
+    });
+  });
+
   // Illustrate route parameters
   app.get('/location/:latitude/:longitude', function (req, res, next) {
     var lat = Number(req.param('latitude'))
@@ -118,7 +136,7 @@ module.exports.create = function (app) {
 
             req.session.user = user;
 
-            res.redirect('/explore');
+            res.redirect('/followers');
           });
         });
       }

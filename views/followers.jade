@@ -1,0 +1,5 @@
+h1 Followers
+#followers
+  each follower in followers
+    - if (follower.profile_picture)
+      img(src='#{follower.profile_picture}', title='#{follower.username}')
