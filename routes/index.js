@@ -70,4 +70,20 @@ module.exports.create = function (app) {
       });
     });
   });
-}
+
+  app.get('/authorize', function(req, res) {
+    res.redirect(ig.get_authorization_url('http://localhost:3000/handleAuth', { scope: ['likes'], state: 'a state' }));
+  });
+
+  app.get('/handleAuth', function(req, res) {
+    ig.authorize_user(req.query.code, 'http://localhost:3000/handleAuth', function(err, result) {
+      if (err) {
+        console.log(err);
+        res.send("Didn't work");
+      } else {
+        console.log('Yay! Access token is ' + require('util').inspect(result));
+        res.send('You made it!!');
+      }
+    });
+  });
+};
