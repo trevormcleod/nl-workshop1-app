@@ -6,3 +6,28 @@ body {
 a {
   color: #00B7FF;
 }
+
+.map-container {
+	bottom: 0;
+	left: 0px;
+	position: fixed;
+	right: 0;
+	top: 50px;
+}
+
+#map {
+	height: 100%;
+	overflow: visible;
+	position: relative;
+}
+
+.instagram-container {
+	height: 100%;
+	z-index: 2;
+	position: relative;
+}
+
+.photos-container {
+	position: absolute;
+	bottom: 0;
+}

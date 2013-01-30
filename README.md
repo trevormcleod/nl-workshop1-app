@@ -44,8 +44,6 @@ __Student Steps__
 10. Adding a new view called "Location"	 
 
 
-
-
 ### Step 3 - Jade
 
 Sexier Views, Using JQuery on the Front End
@@ -58,11 +56,24 @@ __Student Steps__
 
 ### Step 4 - Mongo
 
-Storing Users in DB, Passport Authentication, Shows List of Followers/Following with Locations on Front End
+Storing Users in DB, Passport Authentication, Shows List of Followers/Following with Locations on Front End.
+
+__Student Steps__
+
+1. Connecting to Mongo
+2. Add login page
+3. User Model setup
+4. 
 
 ### Step 5 - Streams
 
-Instagram API Integrated, Piping Photos in to Front End
+Instagram API Integrated, Piping Photos in to Front End.
+
+__Student Steps__
+
+1. Use Instagram API.
+2. Add socket.io.
+
 
 ### Step 6 - Deploy!
 

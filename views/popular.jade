@@ -1,2 +1,22 @@
-each post in data
-  img(src='#{post.images.thumbnail.url}')
+extends layout
+block content
+  div.instagram-container
+    each post in data
+      - if (post.location)
+        span(title='#{JSON.stringify(post.location.longitude)}', value='#{JSON.stringify(post.location.latitude)}').photo
+          img(src='#{post.images.thumbnail.url}')
+
+  div(style="z-index: 0;").map-container
+    div#map
+  script(src="/javascripts/maps.js")
+
+
+
+
+
+
+
+
+
+
+

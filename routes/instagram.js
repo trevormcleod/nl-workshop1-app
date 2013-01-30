@@ -5,11 +5,12 @@ Instagram.set('client_secret', '4429264c9d3a40189b383da9868a2b80');
 
 
 exports.popular = function (req, res) {
-        Instagram.media.popular({
+    Instagram.media.popular({
 		complete: function (data, pagination) {
 			console.log(require('util').inspect(data[0]));
 			res.render('popular', {
-				data: data
+				data: data,
+				title: "Popular"
 			});
 		},
 		error: function (msg, obj, caller) {
