@@ -71,7 +71,7 @@ module.exports.create = function (app) {
     });
   });
 
-  app.get('/authorize', function(req, res) {
+  app.get('/authorize', function(req, res, next) {
     res.redirect(ig.get_authorization_url('http://localhost:3000/handleAuth', { scope: ['basic'], state: 'a state' }));
   });
 
