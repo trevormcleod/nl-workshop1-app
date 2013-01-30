@@ -4,7 +4,7 @@ var mongoose = require('mongoose'),
 
 // connect
 
-var uri = 'localhost';
+var uri = 'mongodb://nodelingo:GAworkshop@linus.mongohq.com:10090/sampleApp';
 
 mongoose.connect(uri, 'instadb');
 
