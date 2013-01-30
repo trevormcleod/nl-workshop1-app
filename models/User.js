@@ -3,6 +3,7 @@ var mongoose = require('mongoose'),
 
 var UserSchema = Schema({
   name: String,
+  username: String,
   accessToken: String,
   id: String,
   following: [FriendSchema],
