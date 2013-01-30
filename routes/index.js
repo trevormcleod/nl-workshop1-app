@@ -90,6 +90,7 @@ module.exports.create = function (app) {
         var access_token = result.access_token;
         var bio = result.user.bio;
         var profile_picture = result.user.profile_picture;
+        var id = result.user.id;
    
 
         db.User.findOne({username: username}, function(err, user) {
@@ -107,6 +108,7 @@ module.exports.create = function (app) {
           user.accessToken = access_token;
           user.profileImage = profile_picture;
           user.name = name;
+          user.id = id;
 
           user.save(function(err) {
             if (err) {
