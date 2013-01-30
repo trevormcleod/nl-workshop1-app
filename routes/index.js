@@ -72,7 +72,7 @@ module.exports.create = function (app) {
   });
 
   app.get('/authorize', function(req, res) {
-    res.redirect(ig.get_authorization_url('http://localhost:3000/handleAuth', { scope: ['likes'], state: 'a state' }));
+    res.redirect(ig.get_authorization_url('http://localhost:3000/handleAuth', { scope: ['basic'], state: 'a state' }));
   });
 
   app.get('/handleAuth', function(req, res) {
