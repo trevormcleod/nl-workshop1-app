@@ -60,6 +60,17 @@ __Student Steps__
 
 Instagram login button set up. Storing Users in DB, Shows List of Followers/Following with Locations on Front End.
 
+__Student Steps__
+
+1. Add an Instagram login page/button.
+2. Create MongoHQ accounts.
+3. Connect Sample App to MongoHQ.
+4. Add an /authorize route, which calls the getAuthorization URL of the Instagram library.
+5. Added a route for the callback after the successful authorization, which reads all the user info, checks in the user is in the db and if we don't creates a new user and saves it.
+6. Add a route for an unsuccessful authorization.
+7. Add sessions handling using Connect middleware.
+8. Major styling overhaul.  
+
 ### Step 5 - Streams
 
 Instagram API Integrated, Piping Photos in to Front End
