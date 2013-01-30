@@ -6,3 +6,23 @@ body {
 a {
   color: #00B7FF;
 }
+
+.button {
+	width: 200px;
+	height: 37px;
+	margin: 0 auto;
+	border: 1px solid #31251a;
+	background-image: linear-gradient(bottom, #cdcac1 0%, #F1EDE6 50%);
+	background-image: -o-linear-gradient(bottom, #cdcac1 0%, #F1EDE6 50%);
+	background-image: -moz-linear-gradient(bottom, #cdcac1 0%, #F1EDE6 50%);
+	background-image: -webkit-linear-gradient(bottom, #cdcac1 0%, #F1EDE6 50%);
+	background-image: -ms-linear-gradient(bottom, #cdcac1 0%, #F1EDE6 50%);
+	background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, #cdcac1), color-stop(0.5, #F1EDE6) );
+	box-shadow: inset 0 0 2px #fff;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px #1f1812;
+	-webkit-box-shadow: 0 1px 3px #1f1812;
+}
+
+
