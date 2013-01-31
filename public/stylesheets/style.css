@@ -1,12 +1,45 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-color: rgb(81, 127, 164);
+  background-image: url('/images/instagram-background2.png');
+  /*background-color: rgb(81, 127, 164);*/
 }
 
 a {
   color: #00B7FF;
 }
 
+/*
+**  Map Page style
+*/
+
+.map-container {
+	bottom: 0;
+	left: 0px;
+	position: fixed;
+	right: 0;
+	top: 50px;
+}
+
+#map {
+	height: 100%;
+	overflow: visible;
+	position: relative;
+}
+
+.instagram-container {
+	height: 100%;
+	z-index: 2;
+	position: relative;
+}
+
+.photos-container {
+	position: absolute;
+	bottom: 0;
+}
+
+/*
+**  Landing Page style
+*/
 
 .wrap {
 	width: 250px;
@@ -105,7 +138,71 @@ a {
 	font-weight: 500;
 	color: #483e33;
 	text-shadow: 0px 1px 2px #fff;
+	text-decoration: none;
 }
+
+.footer {
+	width: 100%;
+	text-align: center;
+	height: 10px;
+	position: absolute;
+	bottom: 27px;
+}
+
+.footer p a {
+	text-align: center;
+	color: white;
+	text-decoration: none;
+}
+
+/*
+** Followers Page style
+*/
+
+.header {
+	text-align: center;
+	color: #ff5858;
+	font-size: 20px;
+}
+
+
+.heading {
+  	background-image: url('/images/instagram-background2.png');
+	height: 100px;
+}
+
+.heading-text-container {
+	width: 1200px;
+	height: 100px;
+	background-image: url('/images/instagram-background2.png');
+}
+
+.heading h1 {
+	margin: 0px;
+	padding: 17px;
+	color: white;
+	font-size: 50px;
+}
+
+#image-container1 {
+	display: inline-block;
+	width: 100%;
+}
+
+#image-container2 {
+	display: inline-block;
+	width: 100%;
+}
+
+.photo {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	width: 150px;
+	height: 150px;
+	cursor: pointer;
+}
+
 
 
 

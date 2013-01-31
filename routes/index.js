@@ -49,9 +49,20 @@ module.exports.create = function (app) {
 
       console.log(require('util').inspect(followers));
 
-      res.render('followers', {
-        followers: followers
-      });
+      ig.user_follows(user.id, function(err, follows, pagination, limit) {
+        if(err) {
+          console.log(err);
+          return next(err);
+        }
+
+        console.log(require('util').inspect(follows));
+
+        res.render('followers', {
+          followers: followers,
+          follows: follows,
+          title: 'Followers Page'
+        });
+      })
     });
   });
 

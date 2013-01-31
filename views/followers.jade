@@ -1,5 +1,19 @@
-h1 Followers
-#followers
-  each follower in followers
-    - if (follower.profile_picture)
-      img(src='#{follower.profile_picture}', title='#{follower.username}')
+extends layout
+block content
+	div.header Click on any profile for a real-time view of their latest image!
+	div#image-container1
+		div.heading
+			div.heading-text-container
+				h1 You have <span style="color: #28b1ff;">300</span> photographers following you.
+		each follower in followers
+			- if (follower.profile_picture)
+				div.photo
+					img(src='#{follower.profile_picture}', title='#{follower.username}')
+	div#image-container2
+		div.heading
+			div.heading-text-container
+				h1 You are following <span style="color: #ffd20c;">200</span> fellow photographers.
+		each followee in follows
+			- if (followee.profile_picture)
+				div.photo
+					img(src='#{followee.profile_picture}', title='#{followee.username}')
