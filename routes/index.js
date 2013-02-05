@@ -1,5 +1,6 @@
 var ig = require('instagram-node').instagram(),
-    db = require('../models');
+    db = require('../models'),
+    _ = require('underscore');
 
 /*
  * GET home page.
@@ -67,6 +68,29 @@ module.exports.create = function (app) {
           title: 'Followers Page'
         });
       })
+    });
+  });
+
+  app.get('/follow/:userId', function (req, res, next) {
+    ig.user_media_recent(req.params.userId, function (err, medias) {
+      console.log(medias);
+      var locationMedia = _.find(medias, function (media) {
+        console.log(media.location);
+        console.log(media.location.latitude);
+        return media.location && media.location.latitude;
+      });
+      console.log(locationMedia);
+      if (locationMedia) {
+        res.redirect('/location/'+ locationMedia.location.latitude + '/' + locationMedia.location.longitude);
+      } else {
+        res.redirect('/nolocation/' + req.params.userId);
+      }
+    });
+  });
+
+  app.get('/nolocation/:userId', function (req, res, next) {
+    res.render('nolocation', {
+      requestedUser: req.params.userId
     });
   });
 

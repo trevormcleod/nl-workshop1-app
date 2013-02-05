@@ -9,6 +9,7 @@
     "express": "3.0.5",
     "jade": "*",
     "instagram-node": "~0.1.9",
-    "mongoose": "~3.5.4"
+    "mongoose": "~3.5.4",
+    "underscore": "~1.4.4"
   }
 }

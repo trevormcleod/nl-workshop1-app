@@ -8,13 +8,15 @@ block content
 				h1 Followers: <span style="color: #ffd20c;">#{ followerCount }</span>
 		each follower in followers
 			- if (follower.profile_picture)
-				div.photo
-					img(src='#{follower.profile_picture}', title='#{follower.username}')
+				a(href="/follow/#{follower.id}")
+					div.photo
+						img(src='#{follower.profile_picture}', title='#{follower.username}')
 	div#image-container2
 		div.heading
 			div.heading-text-container
 				h1 Following: <span style="color: #ffd20c;">#{ followingCount }</span>
 		each followee in follows
 			- if (followee.profile_picture)
-				div.photo
-					img(src='#{followee.profile_picture}', title='#{followee.username}')
+				a(href="/follow/#{followee.id}")
+					div.photo
+						img(src='#{followee.profile_picture}', title='#{followee.username}')
