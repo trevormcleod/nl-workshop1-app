@@ -73,10 +73,9 @@ module.exports.create = function (app) {
 
   app.get('/follow/:userId', function (req, res, next) {
     ig.user_media_recent(req.params.userId, function (err, medias) {
+      if (err) { return next(err); }
       console.log(medias);
       var locationMedia = _.find(medias, function (media) {
-        console.log(media.location);
-        console.log(media.location.latitude);
         return media.location && media.location.latitude;
       });
       console.log(locationMedia);
@@ -89,15 +88,22 @@ module.exports.create = function (app) {
   });
 
   app.get('/nolocation/:userId', function (req, res, next) {
-    res.render('nolocation', {
-      requestedUser: req.params.userId
+    ig.user(req.params.userId, function (err, user) {
+      if (err) { 
+        console.log('anonymous user'); 
+        user = { username: 'anonymous'}; 
+      }
+      console.log(user);
+      res.render('nolocation', {
+        requestedUser: user
+      });
     });
   });
 
   // Illustrate route parameters
   app.get('/location/:latitude/:longitude', function (req, res, next) {
-    var lat = Number(req.param('latitude'))
-    var lng = Number(req.param('longitude'))
+    var lat = Number(req.param('latitude'));
+    var lng = Number(req.param('longitude'));
 
     ig.location_search({ lat: lat, lng: lng }, function(err, result, limit) {
       if (err) {
