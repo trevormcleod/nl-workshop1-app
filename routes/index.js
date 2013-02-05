@@ -42,6 +42,7 @@ module.exports.create = function (app) {
     console.log(user);
 
     ig.user_followers(user.id, function(err, followers, pagination, limit) {
+      var followerCount = followers.length;
       if (err) {
         console.log(err);
         return next(err);
@@ -50,6 +51,7 @@ module.exports.create = function (app) {
       console.log(require('util').inspect(followers));
 
       ig.user_follows(user.id, function(err, follows, pagination, limit) {
+        var followingCount = follows.length;
         if(err) {
           console.log(err);
           return next(err);
@@ -60,6 +62,8 @@ module.exports.create = function (app) {
         res.render('followers', {
           followers: followers,
           follows: follows,
+          followerCount: followerCount,
+          followingCount: followingCount,
           title: 'Followers Page'
         });
       })

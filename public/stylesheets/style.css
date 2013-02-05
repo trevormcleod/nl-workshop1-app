@@ -1,6 +1,7 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-image: url('/images/instagram-background2.png');
+  margin: 0px;
   /*background-color: rgb(81, 127, 164);*/
 }
 
@@ -160,9 +161,21 @@ a {
 */
 
 .header {
+	width: 100%;
+	margin: 0px auto;
+	display: block;
+	position: fixed;
+	top: 0px;
+	padding: 0px;
+	height: 30px;
+	background-color: #3CF;
+}
+
+.header-text-container {
+	margin: 4px auto;
 	text-align: center;
-	color: #ff5858;
-	font-size: 20px;
+	color: white;
+	font-size: 18px;
 }
 
 
@@ -178,10 +191,10 @@ a {
 }
 
 .heading h1 {
-	margin: 0px;
+	margin-top: 40px;
 	padding: 17px;
 	color: white;
-	font-size: 50px;
+	font-size: 30px;
 }
 
 #image-container1 {

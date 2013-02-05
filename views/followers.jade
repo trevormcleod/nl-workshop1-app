@@ -1,10 +1,11 @@
 extends layout
 block content
-	div.header Click on any profile for a real-time view of their latest image!
+	div.header 
+		div.header-text-container Click on any profile for a real-time view of their latest image!
 	div#image-container1
 		div.heading
 			div.heading-text-container
-				h1 You have <span style="color: #28b1ff;">300</span> photographers following you.
+				h1 Followers: <span style="color: #ffd20c;">#{ followerCount }</span>
 		each follower in followers
 			- if (follower.profile_picture)
 				div.photo
@@ -12,7 +13,7 @@ block content
 	div#image-container2
 		div.heading
 			div.heading-text-container
-				h1 You are following <span style="color: #ffd20c;">200</span> fellow photographers.
+				h1 Following: <span style="color: #ffd20c;">#{ followingCount }</span>
 		each followee in follows
 			- if (followee.profile_picture)
 				div.photo
