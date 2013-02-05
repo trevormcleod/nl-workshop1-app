@@ -1,8 +1,230 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('/images/instagram-background2.png');
+  margin: 0px;
+  /*background-color: rgb(81, 127, 164);*/
 }
 
 a {
   color: #00B7FF;
 }
+
+/*
+**  Map Page style
+*/
+
+.map-container {
+	bottom: 0;
+	left: 0px;
+	position: fixed;
+	right: 0;
+	top: 50px;
+}
+
+#map {
+	height: 100%;
+	overflow: visible;
+	position: relative;
+}
+
+.instagram-container {
+	height: 100%;
+	z-index: 2;
+	position: relative;
+}
+
+.photos-container {
+	position: absolute;
+	bottom: 0;
+}
+
+/*
+**  Landing Page style
+*/
+
+.wrap {
+	width: 250px;
+	height: 60px;
+	padding-top: 20px;
+	margin: 300px auto;
+}
+
+
+.button {
+	width: 200px;
+	height: 37px;
+	margin: 0 auto;
+	border: 1px solid #31251a;
+	background-image: linear-gradient(bottom, #cdcac1 0%, #F1EDE6 50%);
+	background-image: -o-linear-gradient(bottom, #cdcac1 0%, #F1EDE6 50%);
+	background-image: -moz-linear-gradient(bottom, #cdcac1 0%, #F1EDE6 50%);
+	background-image: -webkit-linear-gradient(bottom, #cdcac1 0%, #F1EDE6 50%);
+	background-image: -ms-linear-gradient(bottom, #cdcac1 0%, #F1EDE6 50%);
+	background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, #cdcac1), color-stop(0.5, #F1EDE6) );
+	box-shadow: inset 0 0 2px #fff;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	-moz-box-shadow: 0 1px 3px #1f1812;
+	-webkit-box-shadow: 0 1px 3px #1f1812;
+}
+
+.left {
+	float: left;
+}
+
+.red {
+	background-image: linear-gradient(bottom, #D0022B 0%, #FB2F5B 50%);
+	background-image: -o-linear-gradient(bottom, #D0022B 0%, #FB2F5B 50%);
+	background-image: -moz-linear-gradient(bottom, #D0022B 0%, #FB2F5B 50%);
+	background-image: -webkit-linear-gradient(bottom, #D0022B 0%, #FB2F5B 50%);
+	background-image: -ms-linear-gradient(bottom, #D0022B 0%, #FB2F5B 50%);
+	background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, #D0022B), color-stop(0.5, #FB2F5B) );
+	height: 37px;
+	width: 8px;
+	float: left;
+	-moz-border-radius-topleft: 4px;
+	-moz-border-radius-bottomleft: 4px;
+	border-top-left-radius: 4px;
+	border-bottom-left-radius: 4px;
+	overflow: hidden;
+}
+
+.orange {
+	background-image: linear-gradient(bottom, #D1A918 0%, #F9D349 50%);
+	background-image: -o-linear-gradient(bottom, #D1A918 0%, #F9D349 50%);
+	background-image: -moz-linear-gradient(bottom, #D1A918 0%, #F9D349 50%);
+	background-image: -webkit-linear-gradient(bottom, #D1A918 0%, #F9D349 50%);
+	background-image: -ms-linear-gradient(bottom, #D1A918 0%, #F9D349 50%);
+	background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, #D1A918), color-stop(0.5, #F9D349) );
+	height: 37px;
+	width: 8px;
+	float: left;
+	overflow: hidden;
+}
+
+.green {
+	background-image: linear-gradient(bottom, #53A675 0%, #7FD0A2 50%);
+	background-image: -o-linear-gradient(bottom, #53A675 0%, #7FD0A2 50%);
+	background-image: -moz-linear-gradient(bottom, #53A675 0%, #7FD0A2 50%);
+	background-image: -webkit-linear-gradient(bottom, #53A675 0%, #7FD0A2 50%);
+	background-image: -ms-linear-gradient(bottom, #53A675 0%, #7FD0A2 50%);
+	background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, #53A675), color-stop(0.5, #7FD0A2) );
+	height: 37px;
+	width: 8px;
+	float: left;
+	overflow: hidden;
+}
+
+.blue {
+	background-image: linear-gradient(bottom, #2A7FCA 0%, #60AEF7 50%);
+	background-image: -o-linear-gradient(bottom, #2A7FCA 0%, #60AEF7 50%);
+	background-image: -moz-linear-gradient(bottom, #2A7FCA 0%, #60AEF7 50%);
+	background-image: -webkit-linear-gradient(bottom, #2A7FCA 0%, #60AEF7 50%);
+	background-image: -ms-linear-gradient(bottom, #2A7FCA 0%, #60AEF7 50%);
+	background-image: -webkit-gradient( linear, left bottom, left top, color-stop(0, #2A7FCA), color-stop(0.5, #60AEF7) );
+	height: 37px;
+	width: 8px;
+	float: left;
+	overflow: hidden;
+}
+
+.right {
+	float: right;
+	width: 76%;
+	margin-top: 8px;
+}
+
+.button .right a {
+	font-size: 13px;
+	font-weight: 500;
+	color: #483e33;
+	text-shadow: 0px 1px 2px #fff;
+	text-decoration: none;
+}
+
+.footer {
+	width: 100%;
+	text-align: center;
+	height: 10px;
+	position: absolute;
+	bottom: 27px;
+}
+
+.footer p a {
+	text-align: center;
+	color: white;
+	text-decoration: none;
+}
+
+/*
+** Followers Page style
+*/
+
+.header {
+	width: 100%;
+	margin: 0px auto;
+	display: block;
+	position: fixed;
+	top: 0px;
+	padding: 0px;
+	height: 30px;
+	background-color: #3CF;
+}
+
+.header-text-container {
+	margin: 4px auto;
+	text-align: center;
+	color: white;
+	font-size: 18px;
+}
+
+
+.heading {
+  	background-image: url('/images/instagram-background2.png');
+	height: 100px;
+}
+
+.heading-text-container {
+	width: 1200px;
+	height: 100px;
+	background-image: url('/images/instagram-background2.png');
+}
+
+.heading h1 {
+	margin-top: 40px;
+	padding: 17px;
+	color: white;
+	font-size: 30px;
+}
+
+#image-container1 {
+	display: inline-block;
+	width: 100%;
+}
+
+#image-container2 {
+	display: inline-block;
+	width: 100%;
+}
+
+.photo {
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	width: 150px;
+	height: 150px;
+	cursor: pointer;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

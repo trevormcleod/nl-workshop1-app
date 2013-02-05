@@ -3,9 +3,9 @@ var mongoose = require('mongoose'),
 
 // connect
 
-var uri = 'localhost';
+var uri = 'mongodb://nodelingo:GAworkshop@linus.mongohq.com:10099/instadb';
 
-mongoose.connect(uri, 'instadb');
+mongoose.connect(uri);
 
 // initialize User Model
 
