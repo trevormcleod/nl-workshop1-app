@@ -1,5 +1,6 @@
 var ig = require('instagram-node').instagram(),
-    db = require('../models');
+    db = require('../models'),
+    _ = require('underscore');
 
 /*
  * GET home page.
@@ -70,10 +71,39 @@ module.exports.create = function (app) {
     });
   });
 
+  app.get('/follow/:userId', function (req, res, next) {
+    ig.user_media_recent(req.params.userId, function (err, medias) {
+      if (err) { return next(err); }
+      console.log(medias);
+      var locationMedia = _.find(medias, function (media) {
+        return media.location && media.location.latitude;
+      });
+      console.log(locationMedia);
+      if (locationMedia) {
+        res.redirect('/location/'+ locationMedia.location.latitude + '/' + locationMedia.location.longitude);
+      } else {
+        res.redirect('/nolocation/' + req.params.userId);
+      }
+    });
+  });
+
+  app.get('/nolocation/:userId', function (req, res, next) {
+    ig.user(req.params.userId, function (err, user) {
+      if (err) { 
+        console.log('anonymous user'); 
+        user = { username: 'anonymous'}; 
+      }
+      console.log(user);
+      res.render('nolocation', {
+        requestedUser: user
+      });
+    });
+  });
+
   // Illustrate route parameters
   app.get('/location/:latitude/:longitude', function (req, res, next) {
-    var lat = Number(req.param('latitude'))
-    var lng = Number(req.param('longitude'))
+    var lat = Number(req.param('latitude'));
+    var lng = Number(req.param('longitude'));
 
     ig.location_search({ lat: lat, lng: lng }, function(err, result, limit) {
       if (err) {
