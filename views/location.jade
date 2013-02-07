@@ -10,6 +10,6 @@ block content
 
     medias.on('data', function(data) {
       data.forEach(function(media) {
-        $('#media').append('<img src="' + media.images.low_resolution.url + '" />');
+        $('#media').prepend('<img src="' + media.images.low_resolution.url + '" />');
       });
     });
