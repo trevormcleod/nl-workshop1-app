@@ -7,8 +7,12 @@ block content
 
   script
     var medias = io.connect('http://localhost:3000/#{location.id}')
-
+    function strdecode( data ) {
+      return JSON.parse( decodeURIComponent( escape ( data ) ) );
+    }
     medias.on('data', function(data) {
+      
+      data = strdecode(data);
       data.forEach(function(media) {
         $('#media').prepend('<img src="' + media.images.low_resolution.url + '" />');
       });
