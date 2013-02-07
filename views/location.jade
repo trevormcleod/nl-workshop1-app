@@ -1,4 +1,15 @@
-h1 Location: #{location.name}
-#media
-  each media in medias
-    img(src='#{media.images.low_resolution.url}')
+extends layout
+block content
+  h1 Location: #{location.name}
+  #media
+    each media in medias
+      img(src='#{media.images.low_resolution.url}')
+
+  script
+    var medias = io.connect('http://localhost:3000/#{location.id}')
+
+    medias.on('data', function(data) {
+      data.forEach(function(media) {
+        $('#media').append('<img src="' + media.images.low_resolution.url + '" />');
+      });
+    });
