@@ -34,7 +34,7 @@ app.configure('development', function(){
 // app.get('/', routes.index);
 // app.get('/users', user.list);
 
-routes.create(app);
+routes.create(app, io);
 
 server.listen(app.get('port'), function(){
   console.log("Express server listening on port " + app.get('port'));
