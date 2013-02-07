@@ -11,6 +11,6 @@
     "instagram-node": "~0.1.9",
     "mongoose": "~3.5.4",
     "underscore": "~1.4.4",
-    "insta-stream": "0.0.1"
+    "insta-stream": "0.0.2"
   }
 }
