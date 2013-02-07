@@ -1,4 +1,5 @@
 var ig = require('instagram-node').instagram(),
+    Instastream = require('insta-stream'),
     db = require('../models'),
     _ = require('underscore');
 
@@ -15,7 +16,12 @@ ig.use({
   client_secret: '0a32a7b0349a4d33b16c4bbb2dbf3fec'
 });
 
-module.exports.create = function (app) {
+var is = new Instastream({
+  client_id: '048746d02c444198b88697aa3920b5b4',
+  client_secret: '0a32a7b0349a4d33b16c4bbb2dbf3fec'
+});
+
+module.exports.create = function (app, io) {
   app.get('/', function (req, res) {
     res.render('index', {
       title: "home"
@@ -116,20 +122,19 @@ module.exports.create = function (app) {
       }
 
       var location = result[0]
- 
-      ig.location_media_recent(location.id, function(err, result, pagination, limit) {
-	if (err) {
-	  console.log(err);
-	  return next(err);
-	}
 
-        console.log(require('util').inspect(result));
-        console.log(require('util').inspect(limit));
+      is.search({ lat: lat, lng: lng }, function(stream) {
+        io.of('/' + location.id).on('connection', function(socket) {
+          stream.on('data', function(medias) {
+            socket.emit('data', medias)
+          })
+        })
+      })
 
-        res.render('location', {
-          medias: result,
-          location: location
-        });
+      res.render('location', {
+        title: location.name,
+        medias: [],
+        location: location
       });
     });
   });
