@@ -1,8 +1,8 @@
-# NodeLingo :: Introduction to Node.js Workshop :: Sample Application
+# Introduction to Node.js Workshop :: Sample Application
 
 Example application for workshop students and attendees.
 
-## Organization
+### Organization
 
 ### Step X
 
