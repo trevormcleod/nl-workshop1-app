@@ -12,19 +12,18 @@ Master will contain the final project, as we envision it.
 
 ### Step X
 
-These branches should contain the steps along the way to build the final app, the milestones we hope to hit after each "Code Along" section.
+These branches contain the steps we take along the way to build the final app. They are the milestones we hope to hit after each "Code Along" section of the workshop.
+
 
 ### Step 1 - NPM
-
-Express Installed, App Initialized (Essentially where it is now: 12/26/2012)
-
-Express Configured, Routes Set Up, Lots of Dummy Code for DB/Instagram API.
 
 __Student Steps__
 
 1. npm install express -g
 2. express [APP_NAME]
 3. Create an Instagram App account
+
+
 
 ### Step 2 - Express
 
@@ -34,15 +33,14 @@ __Student Steps__
 
 1. Re-work the routes
 2. Add Instagram library
-3. Added a call to the explore route to get the popular images.
-4. Showing how JSON stringify works.
-5. Sorting locations by longitude/latitude. 
+3. Add a call to the explore route to get the popular images.
+4. Understand how JSON stringify works.
+5. Sort locations by longitude/latitude. 
 6. Add links to a location view on click of an image.
-7. Setting up route parameters within our location route links.
-8. Did a search to find most recent location details based on a users' click on an image.
+7. Set up route parameters within our location route links.
+8. Search to find most recent location details based on a users' click on profile image.
 9. Location Media Recent call to Instagram using location id of first picture.
-10. Adding a new view called "Location"	 
-
+10. Add a new view called "Location"	 
 
 
 
@@ -52,9 +50,11 @@ Sexier Views, Using JQuery on the Front End
 
 __Student Steps__
 
-1. Adding jQuery.
-2. Adding a script tag.
-3. Students can check out Leaflet, Google Maps, others to try to hack around with their Jade files to make things sexy.
+1. Add jQuery.
+2. Add a script tag.
+3. Students can check out Leaflet, Google Maps, others to hack around with their Jade files and make them sexy.
+
+
 
 ### Step 4 - Mongo
 
@@ -66,15 +66,24 @@ __Student Steps__
 2. Create MongoHQ accounts.
 3. Connect Sample App to MongoHQ.
 4. Add an /authorize route, which calls the getAuthorization URL of the Instagram library.
-5. Added a route for the callback after the successful authorization, which reads all the user info, checks in the user is in the db and if we don't creates a new user and saves it.
+5. Add a route for the callback after the successful authorization, which reads all the user info, checks if the user is in the db and if not, creates a new user and saves the new user.
 6. Add a route for an unsuccessful authorization.
 7. Add sessions handling using Connect middleware.
-8. Major styling overhaul.  
+8. Styling overhaul.  
+
+
 
 ### Step 5 - Streams
 
-Instagram API Integrated, Piping Photos in to Front End
+1. Instagram API integrated
+2. Pipe photos into front end templates.
+
+
 
 ### Step 6 - Deploy!
 
-Make Deployment-Ready, Sexy It Up, Winner!!?
+1. Make app deployment ready.
+2. Create Nodejitsu accounts.
+3. Log into Nodejitsu accounts.
+4. 'jitsu deploy' and bask in beautiful new creations.
+5. Hack time, vote on best apps, choose winner!
