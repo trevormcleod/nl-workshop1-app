@@ -1,21 +1,22 @@
-# nl-workshop1-app
+# NodeLingo :: Introduction to Node.js Workshop :: Sample Application
 
 Example application for workshop students and attendees.
 
 ## Organization
 
-## Branches
-
-### Master
-
-Master will contain the final project, as we envision it.
-
 ### Step X
 
 These branches contain the steps we take along the way to build the final app. They are the milestones we hope to hit after each "Code Along" section of the workshop.
 
+# Branches
 
-### Step 1 - NPM
+## Master
+
+Master will contain the final project, as we envision it.
+
+
+
+## Step 1 - NPM
 
 __Student Steps__
 
@@ -25,7 +26,7 @@ __Student Steps__
 
 
 
-### Step 2 - Express
+## Step 2 - Express
 
 Express Configured, Routes Set Up, Lots of Dummy Code for DB/Instagram API.
 
@@ -44,7 +45,7 @@ __Student Steps__
 
 
 
-### Step 3 - Jade
+## Step 3 - Jade
 
 Sexier Views, Using JQuery on the Front End
 
@@ -56,7 +57,7 @@ __Student Steps__
 
 
 
-### Step 4 - Mongo
+## Step 4 - Mongo
 
 Instagram login button set up. Storing Users in DB, Shows List of Followers/Following with Locations on Front End.
 
@@ -73,17 +74,20 @@ __Student Steps__
 
 
 
-### Step 5 - Streams
+## Step 5 - Streams
 
 1. Instagram API integrated
 2. Pipe photos into front end templates.
 
 
 
-### Step 6 - Deploy!
+## Step 6 - Deploy!
 
 1. Make app deployment ready.
 2. Create Nodejitsu accounts.
 3. Log into Nodejitsu accounts.
 4. 'jitsu deploy' and bask in beautiful new creations.
 5. Hack time, vote on best apps, choose winner!
+
+
+
