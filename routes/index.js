@@ -1,7 +1,8 @@
 var ig = require('instagram-node').instagram(),
     Instastream = require('insta-stream'),
     db = require('../models'),
-    _ = require('underscore');
+    _ = require('underscore'),
+    encode = require('../lib/encode');
 
 /*
  * GET home page.
@@ -122,7 +123,7 @@ module.exports.create = function (app, io) {
       is.search({ lat: lat, lng: lng, distance: 5000 }, function(stream) {
         io.of('/' + location.id).on('connection', function(socket) {
           stream.on('data', function(medias) {
-            socket.emit('data', medias)
+            socket.emit('data', encode(medias));
           })
         })
       })
