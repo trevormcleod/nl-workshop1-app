@@ -119,7 +119,7 @@ module.exports.create = function (app, io) {
 
       var location = result[0]
 
-      is.search({ lat: lat, lng: lng }, function(stream) {
+      is.search({ lat: lat, lng: lng, distance: 5000 }, function(stream) {
         io.of('/' + location.id).on('connection', function(socket) {
           stream.on('data', function(medias) {
             socket.emit('data', medias)
