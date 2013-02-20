@@ -2,9 +2,7 @@
 
 Example application for workshop students and attendees.
 
-### Organization
-
-### Step X
+### Organization :: Step X
 
 These branches contain the steps we take along the way to build the final app. They are the milestones we hope to hit after each "Code Along" section of the workshop.
 
