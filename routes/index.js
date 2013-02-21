@@ -60,7 +60,7 @@ module.exports.create = function (app) {
         console.log(require('util').inspect(result));
         console.log(require('util').inspect(limit));
 
-        res.json(location)
+        res.json(result)
       });
     });
   });
