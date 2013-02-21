@@ -22,9 +22,7 @@ module.exports.create = function (app) {
 
       console.log(require('util').inspect(medias));
 
-      res.render('explore', {
-        medias: medias
-      });
+      res.json(medias);
     });
   });
 
@@ -54,10 +52,7 @@ module.exports.create = function (app) {
         console.log(require('util').inspect(result));
         console.log(require('util').inspect(limit));
 
-        res.render('location', {
-          medias: result,
-          location: location
-        });
+        res.json(result)
       });
     });
   });
