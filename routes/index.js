@@ -30,9 +30,7 @@ module.exports.create = function (app) {
 
       console.log(require('util').inspect(medias));
 
-      res.render('explore', {
-        medias: medias
-      });
+      res.json(medias);
     });
   });
 
