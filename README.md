@@ -1,41 +1,20 @@
-# nl-workshop1-app
+## Step 2 - Express
 
-Example application for workshop students and attendees.
+Express Configured, Routes Set Up, Lots of Dummy Code for DB/Instagram API.
 
-## Organization
+__Student Steps__
 
-### Branches
-
-#### master
-
-Master will contain the final project, as we envision it.
-
-#### StepX
-
-These branches should contain the steps along the way to build the final app, the milestones we hope to hit after each "Code Along" section.
-
-#### Steps
-
-##### Step 1 - NPM
-
-Express Installed, App Initialized (Essentially where it is now: 12/26/2012)
-
-##### Step 2 - Express
-
-Express Configured, Routes Set Up, Lots of Dummy Code for DB/Instagram API
-
-##### Step 3 - Jade
-
-Sexier Views, Using JQuery on the Front End
-
-##### Step 4 - Mongo
-
-Storing Users in DB, Passport Authentication, Shows List of Followers/Following with Locations on Front End
-
-##### Step 5 - Streams
-
-Instagram API Integrated, Piping Photos in to Front End
-
-##### Step 6 - Deploy!
-
-Make Deployment-Ready, Sexy It Up, Winner!!?
+1. Re-work the routes.
+	a. Delete the routes from app.js file. 
+	b. Delete user.js route and require.
+	c. Delete index export from index.js file.
+	d. Add module.exports.create, define this as a function which accepts app object - allowing us to add routes to it. Also add the app.get('/') route using this technique.
+2. Add Instagram library (including client_id and client_secret).
+3. Add a explore .get() to get the '/explore' route and popular images page.
+	a. This GET should res.send our JSON data response.
+4. Add a location .get() to get the '/location' route.
+	a. Set up route parameters within our location route links. 
+	b. Sort locations by longitude/latitude.
+	c. This GET should res.send our media result of the locations sort. 
+	d. Location Media Recent call to Instagram using location id of first picture.
+9. Add a new view called "Location"
