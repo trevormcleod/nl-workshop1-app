@@ -6,7 +6,7 @@ block content
       img(src='#{media.images.low_resolution.url}')
 
   script
-    var medias = io.connect('http://localhost:3000/#{location.id}')
+    var medias = io.connect('#{host}/#{location.id}')
     function strdecode( data ) {
       return JSON.parse( decodeURIComponent( escape ( data ) ) );
     }

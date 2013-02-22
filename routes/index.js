@@ -136,7 +136,8 @@ module.exports.create = function (app, io) {
       res.render('location', {
         title: location.name,
         medias: [],
-        location: location
+        location: location,
+        host: conf.host
       });
     });
   });
