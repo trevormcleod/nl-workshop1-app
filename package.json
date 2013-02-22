@@ -11,8 +11,9 @@
     "instagram-node": "~0.1.9",
     "mongoose": "~3.5.4",
     "underscore": "~1.4.4",
-    "insta-stream": "0.0.9",
-    "socket.io": "0.9.13"
+    "insta-stream": "0.0.10",
+    "socket.io": "0.9.13",
+    "connect-mongo": "~0.3.2"
   },
   "description": "Example application for workshop students and attendees.",
   "main": "app.js",
