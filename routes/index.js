@@ -133,14 +133,14 @@ module.exports.create = function (app, io) {
   });
 
   app.get('/authorize', function(req, res, next) {
-    res.redirect(ig.get_authorization_url('http://localhost:3000/handleAuth', { scope: ['basic'], state: 'a state' }));
+    res.redirect(ig.get_authorization_url('http://nodelingo.sampleapp.jit.su/handleAuth', { scope: ['basic'], state: 'a state' }));
   });
 
   app.get('/handleAuth', function(req, res, next) {
     /*
      * { username: '', bio: '', website: '', profile_picture: '', full_name: '', id: '' }
      */
-    ig.authorize_user(req.query.code, 'http://localhost:3000/handleAuth', function(err, result) {
+    ig.authorize_user(req.query.code, 'http://nodelingo.sampleapp.jit.su/handleAuth', function(err, result) {
       if (err) {
         console.log(err);
         res.send("Didn't work");
