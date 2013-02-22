@@ -1,5 +1,5 @@
 {
-  "name": "application-name",
+  "name": "tims",
   "version": "0.0.1",
   "private": true,
   "scripts": {
@@ -14,5 +14,14 @@
     "insta-stream": "0.0.2",
     "socket.io": "0.9.13",
     "connect-mongo": "~0.3.2"
-  }
+  },
+  "description": "Example application for workshop students and attendees.",
+  "main": "app.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "\"\""
+  },
+  "author": "tim",
+  "license": "BSD"
 }
