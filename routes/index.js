@@ -1,12 +1,5 @@
 var ig = require('instagram-node').instagram(),
     db = require('../models');
-/*
- * GET home page.
- */
-
-// exports.index = function(req, res){
-//   res.render('index', { title: 'Express' });
-// };
 
 ig.use({
   client_id: '048746d02c444198b88697aa3920b5b4',
