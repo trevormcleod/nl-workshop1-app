@@ -1,18 +1,25 @@
-var ig = require('instagram-node').instagram(),
+var instagram = require('instagram-node'),
     Instastream = require('insta-stream'),
     db = require('../models'),
     _ = require('underscore'),
     encode = require('../lib/encode');
 
-ig.use({
-  client_id: '048746d02c444198b88697aa3920b5b4',
-  client_secret: '0a32a7b0349a4d33b16c4bbb2dbf3fec'
-});
+var ig = instagram.instagram();
 
-var is = new Instastream({
+var creds = {
   client_id: '048746d02c444198b88697aa3920b5b4',
   client_secret: '0a32a7b0349a4d33b16c4bbb2dbf3fec'
-});
+};
+
+ig.use(creds);
+
+var is = new Instastream(creds);
+
+function createInstagramForUser (user, cb) {
+  var newIG = instagram.instagram();
+  newIG.use({ access_token: user.accessToken });
+  cb(null, newIG);
+}
 
 module.exports.create = function (app, io) {
   app.get('/', function (req, res) {
@@ -40,61 +47,68 @@ module.exports.create = function (app, io) {
   app.get('/followers', function (req, res, next) {
     var user = req.session.user;
     console.log(user);
-
-    ig.user_followers(user.id, function(err, followers, pagination, limit) {
-      var followerCount = followers.length;
-      if (err) {
-        console.log(err);
-        return next(err);
-      }
-
-      console.log(require('util').inspect(followers));
-
-      ig.user_follows(user.id, function(err, follows, pagination, limit) {
-        var followingCount = follows.length;
-        if(err) {
+    createInstagramForUser(user, function (err, myIg) {
+      myIg.user_followers(user.id, function(err, followers, pagination, limit) {
+        var followerCount = followers.length;
+        if (err) {
           console.log(err);
           return next(err);
         }
 
-        console.log(require('util').inspect(follows));
+        console.log(require('util').inspect(followers));
 
-        res.render('followers', {
-          followers: followers,
-          follows: follows,
-          followerCount: followerCount,
-          followingCount: followingCount,
-          title: 'Followers Page'
-        });
-      })
+        myIg.user_follows(user.id, function(err, follows, pagination, limit) {
+          var followingCount = follows.length;
+          if(err) {
+            console.log(err);
+            return next(err);
+          }
+
+          console.log(require('util').inspect(follows));
+
+          res.render('followers', {
+            followers: followers,
+            follows: follows,
+            followerCount: followerCount,
+            followingCount: followingCount,
+            title: 'Followers Page'
+          });
+        })
+      });
     });
   });
 
   app.get('/follow/:userId', function (req, res, next) {
-    ig.user_media_recent(req.params.userId, function (err, medias) {
-      if (err) { return next(err); }
-      console.log(medias);
-      var locationMedia = _.find(medias, function (media) {
-        return media.location && media.location.latitude;
+    var user = req.session.user;
+    createInstagramForUser(user, function (err, myIg) {
+      myIg.user_media_recent(req.params.userId, function (err, medias) {
+        if (err) { return next(err); }
+        console.log(medias);
+        var locationMedia = _.find(medias, function (media) {
+          return media.location && media.location.latitude;
+        });
+        console.log(locationMedia);
+        if (locationMedia) {
+          res.redirect('/location/'+ locationMedia.location.latitude + '/' + locationMedia.location.longitude);
+        } else {
+          res.redirect('/nolocation/' + req.params.userId);
+        }
       });
-      console.log(locationMedia);
-      if (locationMedia) {
-        res.redirect('/location/'+ locationMedia.location.latitude + '/' + locationMedia.location.longitude);
-      } else {
-        res.redirect('/nolocation/' + req.params.userId);
-      }
     });
   });
 
   app.get('/nolocation/:userId', function (req, res, next) {
-    ig.user(req.params.userId, function (err, user) {
-      if (err) { 
-        console.log('anonymous user'); 
-        user = { username: 'anonymous'}; 
-      }
-      console.log(user);
-      res.render('nolocation', {
-        requestedUser: user
+    var user = req.session.user;
+    createInstagramForUser(user, function (err, myIg) {
+      myIg.user(req.params.userId, function (err, user) {
+        if (err) { 
+          console.log('anonymous user'); 
+          user = { username: 'anonymous'}; 
+        }
+        console.log(user);
+        res.render('nolocation', {
+          requestedUser: user
+        });
       });
     });
   });
@@ -103,7 +117,6 @@ module.exports.create = function (app, io) {
   app.get('/location/:latitude/:longitude', function (req, res, next) {
     var lat = Number(req.param('latitude'));
     var lng = Number(req.param('longitude'));
-
     ig.location_search({ lat: lat, lng: lng }, function(err, result, limit) {
       if (err) {
         console.log(err);
@@ -140,7 +153,9 @@ module.exports.create = function (app, io) {
     /*
      * { username: '', bio: '', website: '', profile_picture: '', full_name: '', id: '' }
      */
-    ig.authorize_user(req.query.code, 'http://nodelingo.sampleapp.jit.su/handleAuth', function(err, result) {
+    var myIg = instagram.instagram();
+    myIg.use(creds);
+    myIg.authorize_user(req.query.code, 'http://nodelingo.sampleapp.jit.su/handleAuth', function(err, result) {
       if (err) {
         console.log(err);
         res.send("Didn't work");
