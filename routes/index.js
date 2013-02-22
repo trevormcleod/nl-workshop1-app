@@ -1,10 +1,8 @@
 var ig = require('instagram-node').instagram(),
-    db = require('../models');
+    db = require('../models'),
+    conf = require('../conf');
 
-ig.use({
-  client_id: '048746d02c444198b88697aa3920b5b4',
-  client_secret: '0a32a7b0349a4d33b16c4bbb2dbf3fec'
-});
+ig.use(conf.instagram);
 
 module.exports.create = function (app) {
   app.get('/', function (req, res) {
@@ -97,14 +95,14 @@ module.exports.create = function (app) {
   });
 
   app.get('/authorize', function(req, res, next) {
-    res.redirect(ig.get_authorization_url('http://localhost:3000/handleAuth', { scope: ['basic'], state: 'a state' }));
+    res.redirect(ig.get_authorization_url(conf.host + '/handleAuth', { scope: ['basic'], state: 'a state' }));
   });
 
   app.get('/handleAuth', function(req, res, next) {
     /*
      * { username: '', bio: '', website: '', profile_picture: '', full_name: '', id: '' }
      */
-    ig.authorize_user(req.query.code, 'http://localhost:3000/handleAuth', function(err, result) {
+    ig.authorize_user(req.query.code, conf.host + '/handleAuth', function(err, result) {
       if (err) {
         console.log(err);
         res.send("Didn't work");

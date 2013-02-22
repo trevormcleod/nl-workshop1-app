@@ -7,7 +7,7 @@ var express = require('express')
   , routes = require('./routes')
   , http = require('http')
   , path = require('path')
-  , dbUrl = require('./models').uri;
+  , dbUrl = require('./conf').mongo_uri;
 
 var MongoStore = require('connect-mongo')(express);
 

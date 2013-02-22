@@ -1,9 +1,10 @@
 var mongoose = require('mongoose'),
-    UserSchema = require('./User');
+    UserSchema = require('./User'),
+    conf = require('../conf');
 
 // connect
 
-var uri = 'mongodb://nodelingo:GAworkshop@linus.mongohq.com:10099/instadb';
+var uri = conf.mongo_uri;
 
 mongoose.connect(uri);
 
