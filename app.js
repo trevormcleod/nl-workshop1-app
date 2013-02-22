@@ -7,7 +7,7 @@ var express = require('express')
   , routes = require('./routes')
   , http = require('http')
   , path = require('path')
-  , dbUrl = require('./models').uri;
+  , conf = require('./conf');
 
 var MongoStore = require('connect-mongo')(express);
 
@@ -27,7 +27,7 @@ app.configure(function(){
       secret: 'Node Rocks!'
     , store: new MongoStore({
           db: 'instadb'
-        , url: dbUrl
+        , url: conf.mongo_uri
       })
     }));
   app.use(express.methodOverride());

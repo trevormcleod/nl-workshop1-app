@@ -2,18 +2,14 @@ var instagram = require('instagram-node'),
     Instastream = require('insta-stream'),
     db = require('../models'),
     _ = require('underscore'),
-    encode = require('../lib/encode');
+    encode = require('../lib/encode'),
+    conf = require('../conf');
 
 var ig = instagram.instagram();
 
-var creds = {
-  client_id: '048746d02c444198b88697aa3920b5b4',
-  client_secret: '0a32a7b0349a4d33b16c4bbb2dbf3fec'
-};
+ig.use(conf.instagram);
 
-ig.use(creds);
-
-var is = new Instastream(creds);
+var is = new Instastream(conf.instagram);
 
 function createInstagramForUser (user, cb) {
   var newIG = instagram.instagram();
@@ -146,7 +142,7 @@ module.exports.create = function (app, io) {
   });
 
   app.get('/authorize', function(req, res, next) {
-    res.redirect(ig.get_authorization_url('http://nodelingo.sampleapp.jit.su/handleAuth', { scope: ['basic'], state: 'a state' }));
+    res.redirect(ig.get_authorization_url(conf.host + '/handleAuth', { scope: ['basic'], state: 'a state' }));
   });
 
   app.get('/handleAuth', function(req, res, next) {
@@ -154,8 +150,9 @@ module.exports.create = function (app, io) {
      * { username: '', bio: '', website: '', profile_picture: '', full_name: '', id: '' }
      */
     var myIg = instagram.instagram();
-    myIg.use(creds);
-    myIg.authorize_user(req.query.code, 'http://nodelingo.sampleapp.jit.su/handleAuth', function(err, result) {
+    myIg.use(conf.instagram);
+    myIg.authorize_user(req.query.code, conf.host + '/handleAuth', function(err, result) {
+
       if (err) {
         console.log(err);
         res.send("Didn't work");
