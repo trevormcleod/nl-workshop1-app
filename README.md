@@ -1,41 +1,12 @@
-# nl-workshop1-app
+## Step 4 - Mongo
 
-Example application for workshop students and attendees.
+__Student Steps__
 
-## Organization
-
-### Branches
-
-#### master
-
-Master will contain the final project, as we envision it.
-
-#### StepX
-
-These branches should contain the steps along the way to build the final app, the milestones we hope to hit after each "Code Along" section.
-
-#### Steps
-
-##### Step 1 - NPM
-
-Express Installed, App Initialized (Essentially where it is now: 12/26/2012)
-
-##### Step 2 - Express
-
-Express Configured, Routes Set Up, Lots of Dummy Code for DB/Instagram API
-
-##### Step 3 - Jade
-
-Sexier Views, Using JQuery on the Front End
-
-##### Step 4 - Mongo
-
-Storing Users in DB, Passport Authentication, Shows List of Followers/Following with Locations on Front End
-
-##### Step 5 - Streams
-
-Instagram API Integrated, Piping Photos in to Front End
-
-##### Step 6 - Deploy!
-
-Make Deployment-Ready, Sexy It Up, Winner!!?
+1. Add an Instagram login page/button on '/'.
+2. Create MongoHQ accounts.
+3. Connect Sample App to MongoHQ instance.
+4. Add connect-mongo and set up session storage.
+5. Add an '/authorize' route, which calls the getAuthorization URL of the Instagram library.
+6. Add a route for the callback after the successful authorization, which reads all the user info, checks if the user is in the db and if not, creates a new user and saves the new user.
+7. Add a route for an unsuccessful authorization.
+8. Styling overhaul. 
