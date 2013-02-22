@@ -12,3 +12,4 @@ mongoose.connect(uri);
 var User = mongoose.model('User', UserSchema);
 
 module.exports.User = User;
+module.exports.uri = uri;
