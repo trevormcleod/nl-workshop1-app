@@ -1,9 +1,9 @@
 {
   "name": "tims",
-  "version": "0.0.1-2",
+  "version": "0.0.1-6",
   "private": true,
   "scripts": {
-    "start": "app.js  "
+    "start": "app.js"
   },
   "dependencies": {
     "express": "3.0.5",
