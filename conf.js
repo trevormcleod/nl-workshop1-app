@@ -1,5 +1,5 @@
 module.exports = {
-  host: "localhost:3000",
+  host: "http://localhost:3000",
   mongo_uri: "mongodb://nodelingo:GAworkshop@linus.mongohq.com:10099/instadb",
   instagram: {
     client_id: '048746d02c444198b88697aa3920b5b4',
