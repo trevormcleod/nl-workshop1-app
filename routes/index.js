@@ -22,7 +22,10 @@ module.exports.create = function (app) {
 
       console.log(require('util').inspect(medias));
 
-      res.json(medias);
+      res.render('explore', {
+        title: 'Explore Page',
+        medias: medias
+      });
     });
   });
 
@@ -52,8 +55,27 @@ module.exports.create = function (app) {
         console.log(require('util').inspect(result));
         console.log(require('util').inspect(limit));
 
-        res.json(result)
+        res.render('location', {
+          title: 'Location',
+          medias: result,
+          location: location
+        });
       });
     });
   });
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

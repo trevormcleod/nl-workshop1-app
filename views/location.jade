@@ -1,0 +1,7 @@
+extends layout
+
+block content
+  h1 Location: #{location.name}
+  #media
+    each media in medias
+      img(src='#{media.images.low_resolution.url}')
