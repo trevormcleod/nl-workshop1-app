@@ -5,10 +5,10 @@ Express Configured, Routes Set Up, Lots of Dummy Code for DB/Instagram API.
 __Student Steps__
 
 1. Re-work the routes.
-	a. Delete the routes from app.js file. 
-	b. Delete user.js route and require.
-	c. Delete index export from index.js file.
-	d. Add module.exports.create, define this as a function which accepts app object - allowing us to add routes to it. Also add the app.get('/') route using this technique.
+	- Delete the routes from app.js file. 
+	- Delete user.js route and require.
+	- Delete index export from index.js file.
+	- Add module.exports.create, define this as a function which accepts app object - allowing us to add routes to it. Also add the app.get('/') route using this technique.
 2. Add Instagram library (including client_id and client_secret).
 3. Add a explore .get() to get the '/explore' route and popular images page.
 	a. This GET should res.send our JSON data response.
