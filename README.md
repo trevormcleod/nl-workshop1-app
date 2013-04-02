@@ -19,8 +19,13 @@ __Student Steps__
 	- [routes/index.js]: add app.get('/explore')
 	- [routes/index.js]: add ig.media_popular to '/explore' handler
 	- [routes/index.js]: add res.json() to send data to browser
-4. Add a location .get() to get the '/location' route.
-	a. Set up route parameters within our location route links. 
+4. Add a '/location' route to find locations by lat/lng.
+	- [routes/index.js]: Set up location route with parameters: app.get('/location/:latitude/:longitude')
+	- [routes/index.js]: Convert params to Numbers: var lat = Number(req.param('latitude'))
+	- [routes/index.js]: Call ig.location_search wit lat/lng params
+	- [routes/index.js]: Return result with res.json()
+	- Test by grabbing lat/lng from /explore route and pump into /location
+5. Search for media by location
 	b. Sort locations by longitude/latitude.
 	c. This GET should res.send our media result of the locations sort. 
 	d. Location Media Recent call to Instagram using location id of first picture.
