@@ -10,3 +10,4 @@ __Student Steps__
     - http://instagram.com/developer -> click on 'Manage Clients'
     - Website: http://localhost:3000
     - Redirect URL: http://localhost:3000/handleAuth
+    - Make note of client secret and ID
