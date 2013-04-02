@@ -22,10 +22,7 @@ module.exports.create = function (app) {
 
       console.log(require('util').inspect(medias));
 
-      res.render('explore', {
-        title: 'Explore Page',
-        medias: medias
-      });
+      res.json(medias);
     });
   });
 
