@@ -15,8 +15,10 @@ __Student Steps__
 	- npm install -S instagram-node
 	- [routes/index.js]: add require to top
 	- [routes/index.js]: add ig.use() with client_id and client_secret
-3. Add a explore .get() to get the '/explore' route and popular images page.
-	a. This GET should res.send our JSON data response.
+3. Add a '/explore' route to show popular images.
+	- [routes/index.js]: add app.get('/explore')
+	- [routes/index.js]: add ig.media_popular to '/explore' handler
+	- [routes/index.js]: add res.json() to send data to browser
 4. Add a location .get() to get the '/location' route.
 	a. Set up route parameters within our location route links. 
 	b. Sort locations by longitude/latitude.
