@@ -25,4 +25,3 @@ __Student Steps__
 	- [routes/index.js]: Call ig.media_search wit lat/lng params
 	- [routes/index.js]: Return result with res.json()
 	- Test by grabbing lat/lng from /explore route and pump into /location
-5. Add a new view called "Location"
