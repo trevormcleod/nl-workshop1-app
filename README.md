@@ -20,4 +20,4 @@ __Student Steps__
 4. Create location view to display location images.
 	- [views/location.jade] Create a file in the 'views' folder called 'location.jade'.
 	- [views/location.jade] Iterate through 'medias' array and create an image tag to display media images at each iteration.
-5. Check out Leaflet, Google Maps, others to hack around with their Jade files and make them sexy.
+BONUS Check out Leaflet, Google Maps, others to hack around with their Jade files and make them sexy.
