@@ -1,6 +1,6 @@
 ## Step 5 - Streams
 
-_Student Steps_
+__Student Steps__
 
 1. Integrate insta-stream module.
   - npm install -S insta-stream (Thanks, Brian!)
