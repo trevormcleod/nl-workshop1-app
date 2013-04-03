@@ -113,32 +113,23 @@ module.exports.create = function (app, io) {
   app.get('/location/:latitude/:longitude', function (req, res, next) {
     var lat = Number(req.param('latitude'));
     var lng = Number(req.param('longitude'));
-    ig.location_search({ lat: lat, lng: lng }, function(err, result, limit) {
-      if (err) {
-        console.log(err);
-        return next(err);
-      }
+    var user = req.session.user;
 
-      if (result.length == 0) {
-        return res.send('empty');
-      }
-
-      var location = result[0]
-
-      is.search({ lat: lat, lng: lng, distance: 5000 }, function(stream) {
-        io.of('/' + location.id).on('connection', function(socket) {
-          stream.on('data', function(medias) {
-            socket.emit('data', encode(medias));
-          })
+    is.search({ lat: lat, lng: lng, distance: 5000 }, function(stream) {
+      io.of('/' + user.id).on('connection', function(socket) {
+        stream.on('data', function(medias) {
+          socket.emit('data', encode(medias));
         })
       })
+    })
 
-      res.render('location', {
-        title: location.name,
-        medias: [],
-        location: location,
-        host: conf.host
-      });
+    res.render('location', {
+      title: 'Location Photos',
+      medias: [],
+      user: user,
+      lat: lat,
+      lng: lng,
+      host: conf.host
     });
   });
 
