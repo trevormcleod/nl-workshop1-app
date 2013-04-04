@@ -3,7 +3,7 @@
 __Student Steps__
 
 1. Create a nodejitsu account.
-  - Go to [http://nodejitsu.com](nodejitsu.com)
+  - Go to [nodejitsu.com](http://nodejitsu.com)
 2. Install jitsu.
   - npm install -g jitsu
   - jitsu login
