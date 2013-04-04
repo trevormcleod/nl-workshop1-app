@@ -1,8 +1,16 @@
-## Step 5 - Streams
+## Step 6 - Deploy
 
-_Student Steps_
+__Student Steps__
 
-1. Integrate insta-stream module.
-2. install and set up socket.io.
-3. Pipe photos into front end templates.
+1. Create a nodejitsu account.
+  - Go to [http://nodejitsu.com](nodejitsu.com)
+2. Install jitsu.
+  - npm install -g jitsu
+  - jitsu login
+3. Deploy your app.
+  - Make sure you're in your app's root directory.
+  - Make sure your package.json has a start property defined. (node app.js)
+  - jitsu deploy
+  - check out yourappname.jit.su
+  - !!!
 
