@@ -161,13 +161,21 @@ __Student Steps__
 
 
 
-## Step 6 - Deploy!
+## Step 6 - Deploy
 
-1. Make app deployment ready.
-2. Create Nodejitsu accounts.
-3. Log into Nodejitsu accounts.
-4. 'jitsu deploy' and bask in beautiful new creations.
-5. Hack time, vote on best apps, choose winner!
+__Student Steps__
+
+1. Create a nodejitsu account.
+  - Go to [nodejitsu.com](http://nodejitsu.com)
+2. Install jitsu.
+  - npm install -g jitsu
+  - jitsu login
+3. Deploy your app.
+  - Make sure you're in your app's root directory.
+  - Make sure your package.json has a start property defined. (node app.js)
+  - jitsu deploy
+  - check out yourappname.jit.su
+  - !!!
 
 
 
