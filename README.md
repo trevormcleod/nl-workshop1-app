@@ -13,15 +13,16 @@ __Student Steps__
 	- [app.js]: Add routes.create(app)
 2. Add Instagram library (including client_id and client_secret).
 	- npm install -S instagram-node
-	- [routes/index.js]: add require to top
-	- [routes/index.js]: add ig.use() with client_id and client_secret
+	- [app.js]: add require to top
+	- [app.js]: add ig.use() with client_id and client_secret in middleware
+	- [app.js]: attach ig object to req object
 3. Add a '/explore' route to show popular images.
 	- [routes/index.js]: add app.get('/explore')
-	- [routes/index.js]: add ig.media_popular to '/explore' handler
+	- [routes/index.js]: add req.ig.media_popular to '/explore' handler
 	- [routes/index.js]: add res.json() to send data to browser
 4. Add a '/location' route to find media by lat/lng.
 	- [routes/index.js]: Set up location route with parameters: app.get('/location/:latitude/:longitude')
 	- [routes/index.js]: Convert params to Numbers: var lat = Number(req.param('latitude'))
-	- [routes/index.js]: Call ig.media_search wit lat/lng params
+	- [routes/index.js]: Call req.ig.media_search wit lat/lng params
 	- [routes/index.js]: Return result with res.json()
 	- Test by grabbing lat/lng from /explore route and pump into /location
