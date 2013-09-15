@@ -1,8 +1,5 @@
-var ig = require('instagram-node').instagram(),
-    db = require('../models'),
+var db = require('../models'),
     conf = require('../conf');
-
-ig.use(conf.instagram);
 
 module.exports.create = function (app) {
   app.get('/', function (req, res) {
@@ -12,7 +9,7 @@ module.exports.create = function (app) {
   });
 
   app.get('/explore', function (req, res, next) {
-    ig.media_popular(function(err, medias, limit) {
+    req.ig.media_popular(function(err, medias, limit) {
       if (err) {
         console.log(err);
         // Explain error handling w/ next()
@@ -22,6 +19,7 @@ module.exports.create = function (app) {
       console.log(require('util').inspect(medias));
 
       res.render('explore', {
+        title: 'explore',
         medias: medias
       });
     });
@@ -65,13 +63,14 @@ module.exports.create = function (app) {
     var lat = Number(req.param('latitude'))
     var lng = Number(req.param('longitude'))
 
-    ig.media_search(lat, lng, function(err, medias, limit) {
+    req.ig.media_search(lat, lng, function(err, medias, limit) {
       if (err) {
         console.log(err);
         return next(err);
       }
 
       res.render('location', {
+        title: 'location',
         medias: medias,
         lat: lat,
         lng: lng

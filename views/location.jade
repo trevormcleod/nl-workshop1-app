@@ -1,4 +1,7 @@
-h1 Location: #{lat}, #{lng}
-#media
-  each media in medias
-    img(src='#{media.images.low_resolution.url}')
+extends layout
+
+block content
+  h1 Location: #{lat}, #{lng}
+  #media
+    each media in medias
+      img(src='#{media.images.low_resolution.url}')
