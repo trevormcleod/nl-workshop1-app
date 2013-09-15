@@ -5,10 +5,6 @@ var instagram = require('instagram-node'),
     encode = require('../lib/encode'),
     conf = require('../conf');
 
-var ig = instagram.instagram();
-
-ig.use(conf.instagram);
-
 var is = new Instastream(conf.instagram);
 
 function createInstagramForUser (user, cb) {
