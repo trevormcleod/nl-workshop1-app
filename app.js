@@ -8,7 +8,7 @@ var express = require('express')
   , http = require('http')
   , path = require('path')
   , instagram = require('instagram-node')
-  , dbUrl = require('./conf').mongo_uri;
+  , conf = require('./conf');
 
 var MongoStore = require('connect-mongo')(express);
 
@@ -26,16 +26,13 @@ app.configure(function(){
       secret: 'Node Rocks!'
     , store: new MongoStore({
           db: 'instadb'
-        , url: dbUrl
+        , url: conf.mongo_uri
       })
     }));
   app.use(express.methodOverride());
   app.use(function(req, res, next) {
     var ig = instagram.instagram();
-    ig.use({
-      client_id: '048746d02c444198b88697aa3920b5b4',
-      client_secret: '0a32a7b0349a4d33b16c4bbb2dbf3fec'
-    });
+    ig.use(conf.instagram);
 
     req.ig = ig;
     next();
