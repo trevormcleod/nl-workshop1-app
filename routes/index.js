@@ -25,7 +25,7 @@ module.exports.create = function (app, io) {
   });
 
   app.get('/explore', function (req, res, next) {
-    ig.media_popular(function(err, medias, limit) {
+    req.ig.media_popular(function(err, medias, limit) {
       if (err) {
         console.log(err);
         // Explain error handling w/ next()
@@ -35,6 +35,7 @@ module.exports.create = function (app, io) {
       console.log(require('util').inspect(medias));
 
       res.render('explore', {
+        title: 'explore',
         medias: medias
       });
     });
@@ -43,33 +44,32 @@ module.exports.create = function (app, io) {
   app.get('/followers', function (req, res, next) {
     var user = req.session.user;
     console.log(user);
-    createInstagramForUser(user, function (err, myIg) {
-      myIg.user_followers(user.id, function(err, followers, pagination, limit) {
-        var followerCount = followers.length;
-        if (err) {
+
+    req.ig.user_followers(user.id, function(err, followers, pagination, limit) {
+      var followerCount = followers.length;
+      if (err) {
+        console.log(err);
+        return next(err);
+      }
+
+      console.log(require('util').inspect(followers));
+
+      req.ig.user_follows(user.id, function(err, follows, pagination, limit) {
+        var followingCount = follows.length;
+        if(err) {
           console.log(err);
           return next(err);
         }
 
-        console.log(require('util').inspect(followers));
+        console.log(require('util').inspect(follows));
 
-        myIg.user_follows(user.id, function(err, follows, pagination, limit) {
-          var followingCount = follows.length;
-          if(err) {
-            console.log(err);
-            return next(err);
-          }
-
-          console.log(require('util').inspect(follows));
-
-          res.render('followers', {
-            followers: followers,
-            follows: follows,
-            followerCount: followerCount,
-            followingCount: followingCount,
-            title: 'Followers Page'
-          });
-        })
+        res.render('followers', {
+          followers: followers,
+          follows: follows,
+          followerCount: followerCount,
+          followingCount: followingCount,
+          title: 'Followers Page'
+        });
       });
     });
   });
@@ -134,17 +134,18 @@ module.exports.create = function (app, io) {
   });
 
   app.get('/authorize', function(req, res, next) {
-    res.redirect(ig.get_authorization_url(conf.host + '/handleAuth', { scope: ['basic'], state: 'a state' }));
+    res.redirect(req.ig.get_authorization_url(conf.host + '/handleAuth', { scope: ['basic'], state: 'a state' }));
   });
 
   app.get('/handleAuth', function(req, res, next) {
     /*
      * { username: '', bio: '', website: '', profile_picture: '', full_name: '', id: '' }
      */
-    var myIg = instagram.instagram();
+    /* var myIg = instagram.instagram();
     myIg.use(conf.instagram);
-    myIg.authorize_user(req.query.code, conf.host + '/handleAuth', function(err, result) {
+    myIg.authorize_user(req.query.code, conf.host + '/handleAuth', function(err, result) { */
 
+    req.ig.authorize_user(req.query.code, conf.host + '/handleAuth', function(err, result) {
       if (err) {
         console.log(err);
         res.send("Didn't work");

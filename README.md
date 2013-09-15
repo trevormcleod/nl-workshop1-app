@@ -23,4 +23,3 @@ __Student Steps__
   - [routes/index.js] Create a function createInstagramForUser
   - [routes/index.js] Create new instances of our instagram library for each user in /handleAuth and /followers
   - [routes/index.js] Now multiple people can log in to your app!
-

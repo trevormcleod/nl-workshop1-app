@@ -7,6 +7,7 @@ var express = require('express')
   , routes = require('./routes')
   , http = require('http')
   , path = require('path')
+  , instagram = require('instagram-node')
   , conf = require('./conf');
 
 var MongoStore = require('connect-mongo')(express);
@@ -31,6 +32,13 @@ app.configure(function(){
       })
     }));
   app.use(express.methodOverride());
+  app.use(function(req, res, next) {
+    var ig = instagram.instagram();
+    ig.use(conf.instagram);
+
+    req.ig = ig;
+    next();
+  });
   app.use(app.router);
   app.use(express.static(path.join(__dirname, 'public')));
 });
