@@ -1,5 +1,4 @@
-var instagram = require('instagram-node'),
-    Instastream = require('insta-stream'),
+var Instastream = require('insta-stream'),
     db = require('../models'),
     _ = require('underscore'),
     encode = require('../lib/encode'),
@@ -7,14 +6,10 @@ var instagram = require('instagram-node'),
 
 var is = new Instastream(conf.instagram);
 
-function createInstagramForUser (user, cb) {
-  var newIG = instagram.instagram();
-  newIG.use({ access_token: user.accessToken });
-  cb(null, newIG);
-}
-
 module.exports.create = function (app, io) {
   app.get('/', function (req, res) {
+    req.session.user = null;
+
     res.render('index', {
       title: "home"
     });
@@ -72,35 +67,31 @@ module.exports.create = function (app, io) {
 
   app.get('/follow/:userId', function (req, res, next) {
     var user = req.session.user;
-    createInstagramForUser(user, function (err, myIg) {
-      myIg.user_media_recent(req.params.userId, function (err, medias) {
-        if (err) { return next(err); }
-        console.log(medias);
-        var locationMedia = _.find(medias, function (media) {
-          return media.location && media.location.latitude;
-        });
-        console.log(locationMedia);
-        if (locationMedia) {
-          res.redirect('/location/'+ locationMedia.location.latitude + '/' + locationMedia.location.longitude);
-        } else {
-          res.redirect('/nolocation/' + req.params.userId);
-        }
+    req.ig.user_media_recent(req.params.userId, function (err, medias) {
+      if (err) { return next(err); }
+      console.log(medias);
+      var locationMedia = _.find(medias, function (media) {
+        return media.location && media.location.latitude;
       });
+      console.log(locationMedia);
+      if (locationMedia) {
+        res.redirect('/location/'+ locationMedia.location.latitude + '/' + locationMedia.location.longitude);
+      } else {
+        res.redirect('/nolocation/' + req.params.userId);
+      }
     });
   });
 
   app.get('/nolocation/:userId', function (req, res, next) {
     var user = req.session.user;
-    createInstagramForUser(user, function (err, myIg) {
-      myIg.user(req.params.userId, function (err, user) {
-        if (err) { 
-          console.log('anonymous user'); 
-          user = { username: 'anonymous'}; 
-        }
-        console.log(user);
-        res.render('nolocation', {
-          requestedUser: user
-        });
+    req.ig.user(req.params.userId, function (err, user) {
+      if (err) { 
+        console.log('anonymous user'); 
+        user = { username: 'anonymous'}; 
+      }
+      console.log(user);
+      res.render('nolocation', {
+        requestedUser: user
       });
     });
   });

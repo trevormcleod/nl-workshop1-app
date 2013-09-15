@@ -34,7 +34,12 @@ app.configure(function(){
   app.use(express.methodOverride());
   app.use(function(req, res, next) {
     var ig = instagram.instagram();
-    ig.use(conf.instagram);
+
+    if (req.session.user) {
+      ig.use({access_token: req.session.user.accessToken});
+    } else {
+      ig.use(conf.instagram);
+    }
 
     req.ig = ig;
     next();
