@@ -29,7 +29,7 @@ module.exports.create = function (app) {
     var user = req.session.user;
     console.log(user);
 
-    ig.user_followers(user.id, function(err, followers, pagination, limit) {
+    req.ig.user_followers(user.id, function(err, followers, pagination, limit) {
       var followerCount = followers.length;
       if (err) {
         console.log(err);
@@ -38,7 +38,7 @@ module.exports.create = function (app) {
 
       console.log(require('util').inspect(followers));
 
-      ig.user_follows(user.id, function(err, follows, pagination, limit) {
+      req.ig.user_follows(user.id, function(err, follows, pagination, limit) {
         var followingCount = follows.length;
         if(err) {
           console.log(err);
@@ -79,14 +79,14 @@ module.exports.create = function (app) {
   });
 
   app.get('/authorize', function(req, res, next) {
-    res.redirect(ig.get_authorization_url(conf.host + '/handleAuth', { scope: ['basic'], state: 'a state' }));
+    res.redirect(req.ig.get_authorization_url(conf.host + '/handleAuth', { scope: ['basic'], state: 'a state' }));
   });
 
   app.get('/handleAuth', function(req, res, next) {
     /*
      * { username: '', bio: '', website: '', profile_picture: '', full_name: '', id: '' }
      */
-    ig.authorize_user(req.query.code, conf.host + '/handleAuth', function(err, result) {
+    req.ig.authorize_user(req.query.code, conf.host + '/handleAuth', function(err, result) {
       if (err) {
         console.log(err);
         res.send("Didn't work");
